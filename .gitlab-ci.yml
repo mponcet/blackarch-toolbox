@@ -1,0 +1,9 @@
+stages:
+  - build
+
+build:
+  stage: "build"
+  image:
+    name: "quay.io/buildah/stable:latest"
+  script:
+    - "buildah bud -f Containerfile -t ${CI_REGISTRY_IMAGE}:latest ."
