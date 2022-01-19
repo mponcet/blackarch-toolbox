@@ -1,4 +1,4 @@
-FROM blackarchlinux/blackarch:latest
+FROM docker.io/blackarchlinux/blackarch:latest
 LABEL com.github.containers.toolbox="true"
 
 RUN pacman --noconfirm -Sy sudo && pacman --noconfirm -Sc
