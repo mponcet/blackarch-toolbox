@@ -10,4 +10,5 @@ build:
   script:
     - buildah bud --pull -f Containerfile -t "${DOCKER_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
     - buildah tag "${DOCKER_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" "${DOCKER_REGISTRY_IMAGE}:latest"
-    - buildah push "${DOCKER_REGISTRY_IMAGE}"
+    - buildah push "${DOCKER_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+    - buildah push "${DOCKER_REGISTRY_IMAGE}:latest"
