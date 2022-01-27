@@ -8,5 +8,6 @@ build:
   before_script:
     - buildah login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASSWORD" $DOCKER_REGISTRY
   script:
-    - buildah bud --pull -f Containerfile -t "${DOCKER_REGISTRY_IMAGE}:latest" .
-    - buildah push "${DOCKER_REGISTRY_IMAGE}:latest"
+    - buildah bud --pull -f Containerfile -t "${DOCKER_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" .
+    - buildah tag "${DOCKER_REGISTRY_IMAGE}:${CI_COMMIT_SHA}" "${DOCKER_REGISTRY_IMAGE}:latest"
+    - buildah push "${DOCKER_REGISTRY_IMAGE}"
