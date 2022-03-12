@@ -1,8 +1,8 @@
 stages:
-  - build
+  - build_push
 
-build:
-  stage: build
+build_push:
+  stage: build_push
   image:
     name: quay.io/buildah/stable:latest
   before_script:
